@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, Button, FlatList, ScrollView, StatusBar, StyleSheet, Text, View, WebView } from 'react-native';
 import HTMLView from 'react-native-htmlview';
+import Drawer from 'react-native-drawer-menu';
 
 import { AppStyles, AppTextStyles } from './Styles';
 
