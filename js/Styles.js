@@ -1,19 +1,28 @@
 import { StyleSheet } from 'react-native';
 
 export const AppStyles = StyleSheet.create({
+  /*backCover:{
+    position: 'absolute',
+    marginTop: 20,
+    top:0,
+    bottom:0,
+    left:0,
+    right:0,
+    backgroundColor: "#ffffff",
+  }*/
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
   announcement: {
-    backgroundColor: '#dfdfdf',
-    borderRadius: 6,
-    margin: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    padding: 10
+    backgroundColor: '#ffffff',
+    borderRadius: 0,
+    margin: 0,
+    marginTop: 2,
+    marginBottom: 0,
+    padding: 20
   },
 });
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, Button, FlatList, ScrollView, StatusBar, StyleSheet, Text, View, WebView } from 'react-native';
 import HTMLView from 'react-native-htmlview';
-import Drawer from 'react-native-drawer-menu';
 
 import { AppStyles, AppTextStyles } from './Styles';
 
@@ -10,7 +9,8 @@ export class AnnouncementView extends Component {
     super(props);
     this.state = {
       name: "Loading Announcement",
-      description: "Loading Announcement Description"
+      description: "Loading Announcement Description",
+      tags: "Loading Tags"
     };
 
     this.retrieveContent();
@@ -34,7 +34,8 @@ export class AnnouncementView extends Component {
         this.setState((state) => {
           return {
             name: responseJson.name,
-            description: "<div>"+responseJson.description+"</div>"
+            description: "<div>"+responseJson.description+"</div>",
+            tags:  "<div>"+responseJson.tagsString+"</div>"
           };
         });
       });
@@ -48,6 +49,7 @@ export class AnnouncementView extends Component {
       <View style={AppStyles.announcement}>
         <Text style={AppTextStyles.heading}>{this.state.name}</Text>
         <HTMLView value={this.state.description}/>
+        <HTMLView value2={this.state.tagsString}/>
         <Text>Posted by Sir Issac the Waltson</Text>
       </View>
     );

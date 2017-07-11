@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Button, FlatList, RefreshControl, ScrollView, StatusBar, Text, View, WebView } from 'react-native';
+import { Alert, Button, FlatList, RefreshControl, ScrollView, StatusBar, Text, TouchableOpacity, View, WebView } from 'react-native';
 import HTMLView from 'react-native-htmlview';
 
 import { AppStyles, AppTextStyles } from './Styles';
@@ -18,7 +18,8 @@ export class Announcement extends Component {
     super(props);
     this.state = {
       name: "Loading Announcement",
-      description: "Loading Announcement Description"
+      description: "Loading Announcement Description",
+      tags: "Loading Tags"
     };
 
     this.retrieveContent();
@@ -46,7 +47,8 @@ export class Announcement extends Component {
         this.setState((state) => {
           return {
             name: responseJson.name,
-            description: "<div>"+responseJson.description+"</div>"
+            description: "<div>"+responseJson.description+"</div>",
+            tags: "<div>"+responseJson.tagsString+"</div>"
           };
         });
       });
@@ -57,11 +59,13 @@ export class Announcement extends Component {
 
   render() {
     return (
-      <View style={AppStyles.announcement}>
-        <Text style={AppTextStyles.heading}>{this.state.name}</Text>
-        <HTMLView value={this.state.description}/>
-        <Button title="READ MORE" onPress={() => this.props.returnFunction(this.props.id)} />
-      </View>
+      <TouchableOpacity onPress={() => this.props.returnFunction(this.props.id)} >
+        <View style={AppStyles.announcement} onPress={() => this.props.returnFunction(this.props.id)}>
+          <Text style={AppTextStyles.heading}>{this.state.name}</Text>
+          <HTMLView value={this.state.description}/>
+          <HTMLView value2={this.state.tagsString}/>
+        </View>
+      </TouchableOpacity>
     );
   }
 }
