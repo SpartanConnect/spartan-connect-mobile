@@ -48,6 +48,7 @@ export class Announcement extends Component {
           return {
             name: responseJson.name,
             description: "<div>"+responseJson.description+"</div>",
+            shortDescription: "<div>"+responseJson.description.substring(0,40)+"...</div>",
             tags: "<div>"+responseJson.tagsString+"</div>"
           };
         });
@@ -62,8 +63,8 @@ export class Announcement extends Component {
       <TouchableOpacity onPress={() => this.props.returnFunction(this.props.id)} >
         <View style={AppStyles.announcement} onPress={() => this.props.returnFunction(this.props.id)}>
           <Text style={AppTextStyles.heading}>{this.state.name}</Text>
-          <HTMLView value={this.state.description}/>
-          <HTMLView value2={this.state.tagsString}/>
+          <HTMLView style={AppStyles.announcementDescription} value={this.state.shortDescription}/>
+          <HTMLView value={this.state.tagsString}/>
         </View>
       </TouchableOpacity>
     );

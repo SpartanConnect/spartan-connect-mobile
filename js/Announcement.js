@@ -35,6 +35,7 @@ export class AnnouncementView extends Component {
           return {
             name: responseJson.name,
             description: "<div>"+responseJson.description+"</div>",
+            shortDescription: "<div>"+responseJson.description.substring(0,30)+"</div>",
             tags:  "<div>"+responseJson.tagsString+"</div>"
           };
         });
@@ -48,7 +49,7 @@ export class AnnouncementView extends Component {
     return (
       <View style={AppStyles.announcement}>
         <Text style={AppTextStyles.heading}>{this.state.name}</Text>
-        <HTMLView value={this.state.description}/>
+        <HTMLView value={this.state.shortDescription}/>
         <HTMLView value2={this.state.tagsString}/>
         <Text>Posted by Sir Issac the Waltson</Text>
       </View>
